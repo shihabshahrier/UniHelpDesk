@@ -1,0 +1,111 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' %}" rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static '/home/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/profile/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col">
+					<a class="navbar-brand" href="/student-profile/"> University Info Desk <span>Student</span></a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+
+		
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item active"><a href="/student-profile/" class="nav-link">Profile</a></li>
+	        	<li class="nav-item dropdown">
+            </li>
+				<li class="nav-item"><a href="/student-announcement-view/" class="nav-link">Announcement</a></li>
+				<li class="nav-item"><a href="/complain-student-view/" class="nav-link">Complain</a></li>
+	        	<li class="nav-item"><a href="/course-view/" class="nav-link">Course</a></li>
+
+	        </ul>
+	      </div>
+		  <button type="button" class="btn btn-danger"><a href = "/logout/" style="color: rgb(252, 252, 252);">logout</a></button>
+	    </div>
+		
+	  </nav>
+    <!-- END nav -->
+
+	<section>
+			<div class="container py-5 h-100">
+			  <div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-md-12 col-xl-4">
+		  
+				  <div class="card" style="border-radius: 15px;">
+					<div class="card-body text-center">
+					  <div class="mt-3 mb-4">
+						<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+						  class="rounded-circle img-fluid" style="width: 100px;" />
+					  </div>
+					  <h4 class="mb-2">{{user.first_name}} {{user.last_name}}</h4>
+					  <p class="text-muted mb-4">@{{user.student_id}}<span class="mx-2">|</span><span  class="mx-2">{{user.department}}</span>|<span  class="mx-2">{{user.enrolled_semester}}</span> </p>
+
+					  <button type="button" class="btn btn-primary btn-rounded btn-lg">
+						<a href = "/student-profile-update/" style="color: white;">Update profile</a>
+					  </button>
+					  <div class="d-flex justify-content-between text-center mt-5 mb-2">
+						<div>
+						  <p class="mb-2 h5">8471</p>
+						  <p class="text-muted mb-0">Posted Content</p>
+						</div>
+						<div class="px-3">
+						  <p class="mb-2 h5">8512</p>
+						  <p class="text-muted mb-0">Posted Complain</p>
+						</div>
+						<div>
+						  <p class="mb-2 h5">4751</p>
+						  <p class="text-muted mb-0">Resolved Complain</p>
+						</div>
+					  </div>
+					</div>
+				  </div>
+		  
+				</div>
+			  </div>
+			</div>
+		</section>
+
+		
+	</section>
+
+	
+<script src="{% static '/home/js/jquery.min.js' %}"></script>
+  <script src="{% static '/home/js/popper.js' %}"></script>
+  <script src="{% static '/home/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/home/js/main.js' %}"></script>
+
+	</body>
+</html>
+

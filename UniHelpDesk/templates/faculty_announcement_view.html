@@ -1,0 +1,106 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Courses</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' %}" rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static '/home/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/profile/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col">
+					<a class="navbar-brand" href="/faculty-profile/"> University Info Desk <span>Faculty</span></a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item"><a href="/faculty-profile/" class="nav-link">Profile</a></li>
+	        	<li class="nav-item dropdown">
+
+            </li>
+                <li class="nav-item  active"><a href="/faculty-announcement-view/" class="nav-link">Announcement</a></li>
+	        	<li class="nav-item"><a href="/faculty-course-view/" class="nav-link">Course</a></li>
+	        	<li class="nav-item"><a href="/add-course/" class="nav-link">add course</a></li>
+	          <!-- <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+	<div style="background-color:aliceblue">
+		<center>
+			<h1> Announcements! </h1>
+		</center>
+		<br/>
+		{% for ann in obj %}
+		<div class=" p-3">
+		<div class="card text-center" >
+			<div class="card-header">
+			  <ul class="nav nav-pills card-header-pills">
+				<li class="nav-item">
+				  {{ann.datetime}}
+				</li>
+			  </ul>
+			</div>
+			<div class="card-body">
+			  <h5 class="card-title"> {{ ann.subject }}</h5>
+			  <p class="card-text"><b>{{ ann.statement }}</b></p>
+			  <br/>
+		
+			  <p align="left">Regards,</p>
+			  <p align="left">{{ ann.source }}</p>
+
+			</div>
+			<div class="card-footer text-muted">
+				<small align="left"> Posted by: {{ann.posted_by}} </small>
+			</div>
+		  </div>
+		</div>
+		{% endfor %}
+	</div>
+
+
+
+
+
+	</section>
+
+	
+<script src="{% static '/home/js/jquery.min.js' %}"></script>
+  <script src="{% static '/home/js/popper.js' %}"></script>
+  <script src="{% static '/home/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/home/js/main.js' %}"></script>
+
+	</body>
+</html>
+

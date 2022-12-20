@@ -1,0 +1,111 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Complain</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' %}" rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static '/home/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/profile/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col">
+					<a class="navbar-brand" href="/student-profile/"> University Info Desk <span>Student</span></a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item"><a href="/student-profile/" class="nav-link">Profile</a></li>
+	        	<li class="nav-item dropdown">
+            </li>
+				<li class="nav-item"><a href="/student-announcement-view/" class="nav-link">Announcement</a></li>
+                <li class="nav-item active"><a href="/post-complain/" class="nav-link">Post</a></li>
+				<li class="nav-item active"><a href="/complain-student-view/" class="nav-link">Complain</a></li>
+
+	        	<li class="nav-item"><a href="/course-view/" class="nav-link">Course</a></li>
+	          <!-- <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+	<div style="background-color:aliceblue">
+		<center>
+			<h1> Issues that students are encountering. </h1>
+		</center>
+		
+		
+	<br/>
+	{% for comp in complain %}
+	<div class=" p-3">
+		<div class="card">
+
+			<div class="card-header">
+				<h5 class="card-title">[Posted on - {{comp.datetime}}]</h5>
+				<small>Posted by {{comp.posted_by}} </small>
+			</div>
+
+			<div class="card-body">
+				<p class="card-text"> {{ comp.statement }} </p><br />
+
+				{% if comp.status == "resolved"%}
+				<small style="color:rgb(28, 199, 37)"> Do not worry! This issue has been resolved by
+					{{comp.resolved_by}} </small>
+
+				{% elif comp.status == "pending" %}
+				<small style="color:rgb(45, 147, 225)"> This issue has not been resolved yet. </small>
+
+				{% else %}
+				<small style="color: rgb(220, 22, 22);"> Unfortunately, a solution to this issue was not possible. </small>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+
+	{% endfor %}
+
+	</div>
+
+      
+
+	</section>
+
+	
+<script src="{% static '/home/js/jquery.min.js' %}"></script>
+  <script src="{% static '/home/js/popper.js' %}"></script>
+  <script src="{% static '/home/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/home/js/main.js' %}"></script>
+
+	</body>
+</html>
+

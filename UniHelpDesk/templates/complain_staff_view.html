@@ -1,0 +1,119 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Complain</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' %}" rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static '/home/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/profile/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col">
+					<a class="navbar-brand" href="/staff-profile/"> University Info Desk <span>staff</span></a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item"><a href="/staff-profile/" class="nav-link">Profile</a></li>
+	        	<li class="nav-item dropdown">
+
+            </li>
+	
+	        	<li class="nav-item"><a href="/staff-announcement-view/" class="nav-link">Announcement</a></li>
+                <li class="nav-item active"><a href="/complain-staff-view/" class="nav-link">Complain</a></li>
+                <li class="nav-item"><a href="/payment/" class="nav-link">Payment</a></li>
+	          <!-- <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+{% for c in complain %}
+{% if c.status == "pending" %}
+<br>
+<section>
+    <div class="card text-center" style="background: linear-gradient(to top right, #ffffea 0%, #ffcfcf 100%)">
+        <div class="card-header" >
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="cnum" value = "{{c.cnumber}}">
+                    <input type="hidden" name="status" value = "rejected">
+                    <button type="submit" class="btn btn-danger">Reject</button>
+                </form>
+                
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">@{{c.posted_by}} | {{c.datetime}}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{c.tag}}</h5>
+          <p class="card-text">{{c.statement}}</p>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="cnum" value = "{{c.cnumber}}">
+                <input type="hidden" name="status" value = "resolved">
+                <button type="submit" class="btn btn-primary">Resolve</button>
+            <!-- <a href="#" class="btn btn-primary">Resolve</a> -->
+            </form>
+
+
+
+
+        </div>
+      </div>
+    </section>
+    {% endif %}
+{% endfor %}
+      
+
+      
+	</section>
+
+	
+<script src="{% static '/home/js/jquery.min.js' %}"></script>
+  <script src="{% static '/home/js/popper.js' %}"></script>
+  <script src="{% static '/home/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/home/js/main.js' %}"></script>
+
+	</body>
+</html>
+

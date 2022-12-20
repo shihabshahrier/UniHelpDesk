@@ -1,0 +1,156 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Course Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' %}" rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static '/home/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/profile/style.css' %}">
+    
+
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col">
+					<a class="navbar-brand" href="/student-profile/"> University Info Desk <span>Student</span></a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+			<ul class="navbar-nav mr-auto">
+	        	<li class="nav-item"><a href="/student-profile/" class="nav-link">Profile</a></li>
+	        	<li class="nav-item dropdown">
+            </li>
+				<li class="nav-item"><a href="/student-announcement-view/" class="nav-link">Announcement</a></li>
+				<li class="nav-item"><a href="/complain-student-view/" class="nav-link">Complain</a></li>
+	        	<li class="nav-item active"><a href="/course-view/" class="nav-link">Course</a></li>
+	        	<li class="nav-item active"><a href="/add-course-content/{{course_id}}/" class="nav-link">Upload Content</a></li>
+	          <!-- <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <style>
+		.Body {
+			background-color: #f5f5f5;
+			padding: 20px;
+
+			padding-left: 350px;
+			
+		}
+		</style>
+	
+		
+		{% for content in content %}
+		<section class = "Body">
+
+				
+                {% if content.course_id.course_id == course_id %}
+			<div class="card" style="max-width: 42rem">
+			<div class="card-body">
+
+				<div class="d-flex mb-3">
+				<a href="">
+				</a>
+				
+				<div>
+					<a href="" class="text-dark mb-0">
+					<strong>{{content.upload_by}}</strong>
+					</a>
+					<a href="" class="text-muted d-block" style="margin-top: -6px">
+					<small>{{content.datetime}}</small>
+					</a>
+				</div>
+				</div>
+
+				<div>
+                    <i class="fa-solid fa-tag"><small>{{content.course_content_tag}}</small></i>
+				<p>
+					
+					{{content.course_content_description}}
+					
+				</p>
+				</div>
+			</div>
+
+			<div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+				{% if content.content_img %}
+				<img src= "{{ content.content_img.url }}" class="img-fluid"/>
+				{% endif %}
+				<a href="#!">
+				<div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+				</a>
+			</div>
+
+			<div class="card-body">
+
+				<div class="d-flex justify-content-between mb-3">
+				<div>
+					<a href="">
+					<i class="fas fa-thumbs-up text-primary"></i>
+					<i class="fas fa-heart text-danger"></i>
+					<span></span>
+					</a>
+				</div>
+
+				</div>
+
+				<form action = "" method = "POST">
+					{% csrf_token %}
+					<input type = "hidden" name = "content_id" value = "{{content.course_content_id}}">
+				<div class="d-flex justify-content-between text-center border-top border-bottom mb-4">
+				<button type="submit" class="btn btn-link btn-lg" data-mdb-ripple-color="dark">
+					<i class="fas fa-thumbs-up me-2"></i>Like
+				</button>
+
+				</div>
+
+		<br>
+        {% endif %}
+		
+
+		</section>
+		{% endfor %}
+	
+
+	</section>
+
+	
+<script src="{% static '/home/js/jquery.min.js' %}"></script>
+  <script src="{% static '/home/js/popper.js' %}"></script>
+  <script src="{% static '/home/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/home/js/main.js' %}"></script>
+
+
+
+	</body>
+</html>
+

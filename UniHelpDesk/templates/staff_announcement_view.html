@@ -1,0 +1,138 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Announcement</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' %}" rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static '/home/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/profile/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col">
+					<a class="navbar-brand" href="/staff-profile/">University Info Desk <span>Staff</span></a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item"><a href="/staff-profile/" class="nav-link">Profile</a></li>
+	        	<li class="nav-item dropdown">
+
+            </li>
+			<li class="nav-item  active"><a href="/post-announcement/" class="nav-link">Announce</a></li>
+                <li class="nav-item  active"><a href="/staff-announcement-view/" class="nav-link">Announcement</a></li>
+	        	<li class="nav-item"><a href="/complain-staff-view/" class="nav-link">Complain</a></li>
+	        	<li class="nav-item"><a href="/payment/" class="nav-link">Payment</a></li>
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+
+      <!-- {%for a in obj%}
+      <br>
+    <div class="card text-center" >
+        <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">@{{a.posted_by}} | {{a.datetime}}</a>
+            </li>
+          </ul>
+        </div>
+		
+        <div class="card-body">
+
+		<form action = "" method = "POST">
+			{% csrf_token %}
+          <h5 class="card-title">{{a.subject}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{a.source}}</h6>
+          <p class="card-text">{{a.statement}}</p>
+		  <input type="hidden" name="aid" value="{{a.anumber}}"/>
+          <button type="submit" class="btn btn-danger">Delete</button>
+		</form>
+
+        </div>
+      </div>
+      {%endfor%} -->
+
+
+	  <div style="background-color:aliceblue">
+        <center>
+            <h1> Announcements! </h1>
+        </center>
+        <br />
+        {% for ann in obj %}
+        <div class=" p-3">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                        <li class="nav-item">
+                            Announced - {{ann.datetime}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ ann.subject }}</h5>
+                    <p class="card-text"><b>{{ ann.statement }} </b></p>
+
+                    <p align="left">Regards,</p>
+                    <p align="left"> {{ ann.source }} </p>
+                    {% comment %} <a href="{%url 'DeleteAnnouncement' ann.anumber %}" class="btn btn-danger">Delete</a> {% endcomment %}
+					<form action = "" method = "POST">
+						{% csrf_token %}
+						<input type="hidden" name="aid" value="{{ann.anumber}}"/>
+						<button type="submit" class="btn btn-danger">Delete</button>
+					</form>
+                </div>
+                <div class="card-footer text-muted">
+                    <small align="left">Posted by: {{ann.posted_by}}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+      
+
+
+	</section>
+
+	
+<script src="{% static '/home/js/jquery.min.js' %}"></script>
+  <script src="{% static '/home/js/popper.js' %}"></script>
+  <script src="{% static '/home/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/home/js/main.js' %}"></script>
+
+	</body>
+</html>
+

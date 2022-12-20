@@ -1,0 +1,116 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Payment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' %}" rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static '/home/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/profile/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col">
+					<a class="navbar-brand" href="/faculty-profile/"> University Info Desk <span>Faculty</span></a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+
+				<!-- <form action="#" class="searchform order-lg-last">
+          <div class="form-group d-flex">
+            <input type="text" class="form-control pl-3" placeholder="Search">
+            <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+          </div>
+        </form> -->
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item"><a href="/staff-profile/" class="nav-link">Profile</a></li>
+	        	<li class="nav-item dropdown">
+
+            </li>
+			<li class="nav-item  active"><a href="/post-announcement/" class="nav-link">Announce</a></li>
+                <li class="nav-item  active"><a href="/staff-announcement-view/" class="nav-link">Announcement</a></li>
+	        	<li class="nav-item"><a href="/complain-staff-view/" class="nav-link">Complain</a></li>
+	        	<li class="nav-item"><a href="/payment/" class="nav-link">Payment</a></li>
+	          <!-- <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrap">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Staff ID</th>
+                              <th>Payment Amount</th>
+                              <th>Payment Date</th>
+ 
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                            
+                                <th scope="row">{{payment.staff_username}}</a></th>
+                                <td>{{payment.payment_date}}</td>
+                                <td>{{payment.payment_amount}}</td>
+
+                              
+                              <!-- <td><a href="#" class="btn btn-success">Progress</a></td> -->
+                            </tr>
+
+                            
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+
+    </section>
+
+
+
+    <script src="{% static '/home/js/jquery.min.js' %}"></script>
+    <script src="{% static '/home/js/popper.js' %}"></script>
+    <script src="{% static '/home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/home/js/main.js' %}"></script>
+  
+      </body>
+  </html>

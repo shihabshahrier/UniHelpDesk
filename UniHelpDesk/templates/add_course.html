@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Add Course</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static '/register/css/opensans-font.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/register/fonts/line-awesome/css/line-awesome.min.css' %}">
+	<!-- Jquery -->
+	<link rel="stylesheet" href="{% static '/register/https://jqueryvalidation.org/files/demo/site-demos.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static '/register/css/style.css' %}"/>
+</head>
+<body class="form-v7">
+    <!-- <h3> <a href="/student-profile/">Home</a> > Settings </h3> -->
+	<div class="page-content">
+        
+		<div class="form-v7-content">
+
+			<form class="form-detail" action="" method="post" id="myform">
+				{% csrf_token %}
+
+				<div class="form-row">
+					<label for="Course Inital">Course Inital</label>
+					<input type="text" name="course_id" id="courseid" class="input-text">
+				</div>
+				<div class="form-row">
+					<label for="Course Name">Course Name</label>
+					<input type="text" name="cname" id="cname" class="input-text" > 
+				</div>
+				<div class="form-row">
+					<label for="Course Description">Course Discription</label>
+					<input type="text" name="description" id="Description" class="input-text" required>
+				</div>
+				<div class="form-row">
+					<label for="Course Credit">Course Credit</label>
+					<input type="text" name="credit" id="Credit" class="input-text" required>
+				</div>
+
+                <div class="form-row">
+					<label for="Course Faculty">Course Faculty</label>
+					<input type="text" name="faculty" id="faculty" class="input-text" required>
+				</div>
+
+                <div class="form-row">
+					<label for="Course Department">Department</label>
+					<input type="text" name="dep" id="dep" class="input-text" required>
+				</div>
+				
+				{% for message in messages %}
+				<small style="color: red;">{{ message }}</small>
+				{% endfor %}
+				<div class="form-row-last">
+					<input type="submit" name="add" class="register" value="add">
+
+                    <a href = "/faculty-course-view/" style = >Cancel</a>
+
+				</div>
+			</form>
+
+		</div>
+	</div>
+	<script src="{% static '/register/https://code.jquery.com/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static '/register/https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js' %}"></script>
+	<script src="{% static '/register/https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js' %}"></script>
+	<script>
+		// just for the demos, avoids form submit
+		jQuery.validator.setDefaults({
+		  	debug: true,
+		  	success:  function(label){
+        		label.attr('id', 'valid');
+   		 	},
+		});
+		$( "#myform" ).validate({
+		  	rules: {
+			    your_email: {
+			      	required: true,
+			      	email: true
+			    },
+			    password: "required",
+		    	comfirm_password: {
+		      		equalTo: "#password"
+		    	}
+		  	},
+		  	messages: {
+		  		username: {
+		  			required: "Please enter an username"
+		  		},
+		  		your_email: {
+		  			required: "Please provide an email"
+		  		},
+		  		password: {
+	  				required: "Please provide a password"
+		  		},
+		  		comfirm_password: {
+		  			required: "Please provide a password",
+		      		equalTo: "Wrong Password"
+		    	}
+		  	}
+		});
+	</script>
+</body>
+</html>
