@@ -12,9 +12,6 @@ from datetime import datetime
 # Create your views here.
 
 
-# @login_required(login_url='studentLogin')
-# def index(request):
-#     return render(request, 'index.html')
 
 def studentLogin(request):
     if request.method == 'POST':
@@ -270,13 +267,6 @@ def complainStudentView(request):
     if Student.objects.filter(user=request.user).exists():
         user = request.user
         complain = Complain.objects.all()
-        # n_complain = []
-        # for c in complain:
-        #     if c.posted_by == user:
-        #         n_complain.append(c)
-        # context = {
-        #     'complain': n_complain[::-1]
-        # }
         context = {
             'complain': complain[::-1]
         }
