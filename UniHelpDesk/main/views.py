@@ -90,15 +90,34 @@ def studentRegister(request):
 
 @login_required(login_url='studentLogin')
 def studentProfile(request):
+    
     if Student.objects.filter(user=request.user).exists():
         user = request.user
         obj = User.objects.get(username=user)
+        obj2 = Student.objects.get(user = user)
+        comp = Complain.objects.all()
+        cont = Course_Content.objects.all()
+        comp_count = 0
+        res_count = 0
+        post_count = 0
+
+        for c in comp:
+            if c.posted_by == obj2:
+                comp_count += 1
+            
+            if c.status == "resolved":
+                res_count += 1
+        
+        for c in cont:
+            if c.upload_by == obj2:
+                post_count+=1
+        
 
         if Student.objects.filter(user=obj).exists():
             obj = Student.objects.get(user=obj)
-            return render(request, 'student_profile.html', {'user': obj, "student": "student"})
+            return render(request, 'student_profile.html', {'user': obj, "student": "student", 'cc':comp_count, 'ccc': post_count, "rcc": res_count})
         
-        return render(request, 'student_profile.html', {'user': obj})
+        return render(request, 'student_profile.html', {'user': obj, 'cc':comp_count, 'ccc': post_count, "rcc": res_count})
     else:
         return redirect('studentLogin')
 
