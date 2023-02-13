@@ -1,7 +1,5 @@
 # UniHelp Desk
 
-![UniHelp Desk](https://image.flaticon.com/icons/svg/1898/1898715.svg)
-
 A simple website where students can access course material and post materials that have helped them with their studies. Staff members can post important announcements, while students can post complaints and make remarks about any problems or concerns they may have.
 
 ### Tech Stack
