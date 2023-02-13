@@ -21,23 +21,23 @@ A simple website where students can access course material and post materials th
 - Course content
 
 ### Installation 
-# clone the repository to your local machine
+#### clone the repository to your local machine
 $ git clone https://github.com/shihabshahrier/CSE370_project.git
 
-# navigate to the UniHelpDesk directory
+#### navigate to the UniHelpDesk directory
 $ cd CSE370_project/UniHelpDesk
 
-# create a virtual environment and activate it
+#### create a virtual environment and activate it
 $ python -m venv venv
 $ source venv/bin/activate
 
-# install the required packages
+#### install the required packages
 $ pip install -r requirements.txt
 
-# run the migrations
+#### run the migrations
 $ python manage.py migrate
 
-# start the development server
+#### start the development server
 $ python manage.py runserver
 
 
